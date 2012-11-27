@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(AudioSource))]
 public class ObjectSlide : MonoBehaviour {
 
 	public Transform MarkerOne;
@@ -8,9 +9,10 @@ public class ObjectSlide : MonoBehaviour {
 	
 	private bool inDefaultPosition = true;
 	private bool move = false;
-	// Use this for initialization
-	void Start () {
-	
+
+	void Activate () {
+		move = true;
+		audio.Play();
 	}
 	
 	void OnMouseDown() {
@@ -25,6 +27,7 @@ public class ObjectSlide : MonoBehaviour {
 					inDefaultPosition = false;
 					move = false;
 				}
+				SendMessage("Moved", SendMessageOptions.DontRequireReceiver);
 			}
 			else {
 				transform.position = Vector3.Lerp(transform.position, MarkerOne.position, Time.deltaTime*5.0F);
