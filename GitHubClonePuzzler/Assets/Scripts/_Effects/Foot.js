@@ -1,6 +1,8 @@
 var baseFootAudioVolume = 1.0;
 var soundEffectPitchRandomness = 0.05;
 
+var defaultFootEffect : AudioClip;
+
 function OnTriggerEnter (other : Collider) {
 	var collisionParticleEffect : CollisionParticleEffect = other.GetComponent(CollisionParticleEffect);
 	
@@ -16,10 +18,11 @@ function OnTriggerEnter (other : Collider) {
 		audio.pitch = Random.Range(1.0 - soundEffectPitchRandomness, 1.0 + soundEffectPitchRandomness);
 		audio.Play();		
 	} else {
-		audio.Play();
+		audio.PlayOneShot(defaultFootEffect);
 	}
 }
 
+	
 function Reset() {
 	rigidbody.isKinematic = true;
 	collider.isTrigger = true;

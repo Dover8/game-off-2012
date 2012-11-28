@@ -17,6 +17,7 @@ Desk lamp by Arang Ziab, Royalty free license from TurboSquid: http://www.turbos
 Flashlight by ric3do, Royalty free license from TurboSquid: http://www.turbosquid.com/FullPreview/Index.cfm/ID/323217
 Sci Fi Door kindly provided by oka-toka: http://www.okatoka.com/search?updated-max=2012-03-14T15:38:00-07:00&max-results=14
 Switch by giant35 at 3dcool.net, tweaked by Steve Dewar TPLD: http://www.3dcool.net/model/6/22402.html
+Sci fi bridge by udead08, Royalty free license from TurboSquid: http://www.turbosquid.com/FullPreview/Index.cfm/ID/539598
 
 All other models created by myself using Lightwave. Utilised Lightwaves "Lightwave to Unity" editor script for easy importing and fbx converting
 
