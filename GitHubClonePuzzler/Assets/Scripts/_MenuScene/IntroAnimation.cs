@@ -25,7 +25,7 @@ public class IntroAnimation : MonoBehaviour {
 			Lerpz.transform.position = Vector3.MoveTowards(Lerpz.transform.position, Ufo.transform.position + new Vector3(0,-1, 0), Time.deltaTime * 5);
 		}
 		else if(flyAway) {
-			Ufo.transform.position = Vector3.Slerp(Ufo.transform.position, new Vector3(1000, -1000, -1000), Time.deltaTime);
+			Ufo.transform.position = Vector3.Slerp(Ufo.transform.position, new Vector3(500, -500, -500), Time.deltaTime);
 		}
 	}
 	
@@ -42,7 +42,7 @@ public class IntroAnimation : MonoBehaviour {
 	}
 	
 	IEnumerator WaitForBeam () {
-		yield return new WaitForSeconds(4);
+		yield return new WaitForSeconds(2.5f);
 		Destroy(Lerpz);
 		flyAway = true;
 		yield return new WaitForSeconds(3);

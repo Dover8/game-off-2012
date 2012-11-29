@@ -5,6 +5,7 @@ public class CloneScene : MonoBehaviour {
 
 	public Collider triggerZone;
 	private bool walking = true;
+	private bool cameraFade = false;
 	// Use this for initialization
 	void Start () {
 		animation.wrapMode = WrapMode.Loop;
@@ -14,6 +15,9 @@ public class CloneScene : MonoBehaviour {
 	void Update () {
 		if (walking) {
 			transform.position = Vector3.MoveTowards(transform.position, new Vector3(6, 0.1f, 0), Time.deltaTime);
+		}
+		if (cameraFade) {
+			Camera.main.rect = new Rect(0, Mathf.Lerp(Camera.main.rect.y,0.5f, Time.deltaTime), 1, Mathf.Lerp(Camera.main.rect.height, 0.5f, Time.deltaTime));
 		}
 	}
 	
@@ -30,6 +34,7 @@ public class CloneScene : MonoBehaviour {
 		GetComponent<Dialogue>().enableSpeech = true;
 		GetComponent<Dialogue>().Start();
 		triggerZone.gameObject.SetActiveRecursively(true);
+		cameraFade = true;
 		yield return new WaitForSeconds(3);
 		animation.wrapMode = WrapMode.Loop;
 		animation.Play();
