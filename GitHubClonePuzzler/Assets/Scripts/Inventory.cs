@@ -11,6 +11,11 @@ public class Inventory : MonoBehaviour {
 			if(item.name == g.name)
 				g.SetActiveRecursively(true);
 		}
+		if (item.name == "Fuel") {
+			gameObject.BroadcastMessage("SetJumping", true);
+			GetComponent<Dialogue>().enableSpeech = true;
+			GetComponent<Dialogue>().Start();
+		}
 	}
 	
 	// Update is called once per frame

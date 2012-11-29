@@ -23,7 +23,7 @@ public class Dialogue : MonoBehaviour {
 		if(enableSpeech) {
 			GUI.Box(new Rect(100,Screen.height-130, 440, 80), "");
 			GUI.DrawTexture(new Rect(110,Screen.height -120, 60,60), images[comboPointer], ScaleMode.StretchToFill, true, 10.0f);
-			GUI.Label(new Rect(180, Screen.height-130, 380, 60), subtitles[comboPointer]);
+			GUI.Label(new Rect(180, Screen.height-100, 380, 60), subtitles[comboPointer]);
 		}
 	}
 	

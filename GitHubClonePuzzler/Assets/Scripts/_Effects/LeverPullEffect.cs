@@ -26,7 +26,7 @@ public class LeverPullEffect : MonoBehaviour {
 				}
 			} else {
 				transform.Rotate (-rotationAmount * Time.deltaTime, 0, 0);
-				if(transform.localRotation.eulerAngles.x < 0) {
+				if(transform.localRotation.eulerAngles.x < 2) {
 					activated = false;
 					flip = !flip;
 				}

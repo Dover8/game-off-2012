@@ -64,6 +64,7 @@ var movement : PlatformerControllerMovement;
 class PlatformerControllerJumping {
 	// Can the character jump?
 	var enabled = true;
+	var soundEffect : AudioClip;
 
 	// How high do we jump when pressing jump and letting go immediately
 	var height = 1.0;
@@ -192,6 +193,7 @@ function ApplyJumping () {
 			movement.verticalSpeed = CalculateJumpVerticalSpeed (jump.height);
 			movement.inAirVelocity = lastPlatformVelocity;
 			SendMessage ("DidJump", SendMessageOptions.DontRequireReceiver);
+			audio.PlayOneShot(jump.soundEffect);
 		}
 	}
 }
@@ -207,6 +209,7 @@ function ApplyGravity () {
 	if (jump.jumping && !jump.reachedApex && movement.verticalSpeed <= 0.0) {
 		jump.reachedApex = true;
 		SendMessage ("DidJumpReachApex", SendMessageOptions.DontRequireReceiver);
+		audio.Stop();
 	}
 	
 	// * When jumping up we don't apply gravity for some time when the user is holding the jump button
@@ -367,6 +370,10 @@ function Reset () {
 
 function SetControllable (controllable : boolean) {
 	canControl = controllable;
+}
+
+function SetJumping (jumping : boolean) {
+	jump.enabled = jumping;
 }
 
 // Require a character controller to be attached to the same game object
