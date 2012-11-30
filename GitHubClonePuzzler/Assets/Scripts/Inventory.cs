@@ -4,6 +4,7 @@ using System.Collections;
 public class Inventory : MonoBehaviour {
 
 	public GameObject[] inventory;
+	public GameObject fuelBar;
 	
 	// Use this for initialization
 	public void AddItem (GameObject item) {
@@ -13,8 +14,10 @@ public class Inventory : MonoBehaviour {
 		}
 		if (item.name == "Fuel") {
 			gameObject.BroadcastMessage("SetJumping", true);
+			SendMessage("AddFuel", 10, SendMessageOptions.DontRequireReceiver);
 			GetComponent<Dialogue>().enableSpeech = true;
 			GetComponent<Dialogue>().Start();
+			fuelBar.SetActiveRecursively(true);
 		}
 	}
 	

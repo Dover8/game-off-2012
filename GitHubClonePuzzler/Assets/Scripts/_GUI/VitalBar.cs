@@ -4,6 +4,7 @@ using System.Collections;
 public class VitalBar : MonoBehaviour {
 
 	public bool _isPlayerOne; //bool to set if this is player 1(true) or 2(false)
+	public bool _isFuel; //bool to set if this is a fuel bar
 	private float _maxBarLength; //how long the bar can be at max length, will change with player upgrade
 	private float _currBarLength; //how long the bar is now
 	private GUITexture _vitalBar;
@@ -24,15 +25,23 @@ public class VitalBar : MonoBehaviour {
 	
 	void OnEnable () {
 		if(_isPlayerOne) {
-			Messenger<float, float>.AddListener("player one health update", OnChangeVitalBarSize);
+			if (_isFuel) {
+				Messenger<float, float>.AddListener("player one fuel update", OnChangeVitalBarSize);
+			} else {
+				Messenger<float, float>.AddListener("player one health update", OnChangeVitalBarSize);
+			}
 		} else {
 			Messenger<float, float>.AddListener("player two health update", OnChangeVitalBarSize);
 		}
 	}
 	
 	void OnDisable () {
-		if(_isPlayerOne) {
-			Messenger<float, float>.RemoveListener("player one health update", OnChangeVitalBarSize);
+		if (_isPlayerOne) {
+			if (_isFuel) {
+				Messenger<float, float>.RemoveListener("player one fuel update", OnChangeVitalBarSize);
+			} else {
+				Messenger<float, float>.RemoveListener("player one health update", OnChangeVitalBarSize);
+			}
 		} else {
 			Messenger<float, float>.RemoveListener("player two health update", OnChangeVitalBarSize);
 		}

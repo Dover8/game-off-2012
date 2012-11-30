@@ -4,6 +4,7 @@ using System.Collections;
 public class CloneScene : MonoBehaviour {
 
 	public Collider triggerZone;
+	public AudioClip soudEffect;
 	private bool walking = true;
 	private bool cameraFade = false;
 	// Use this for initialization
@@ -31,6 +32,7 @@ public class CloneScene : MonoBehaviour {
 		walking = false;
 		animation.wrapMode = WrapMode.Once;
 		animation.PlayQueued("jump", QueueMode.PlayNow, PlayMode.StopAll);
+		audio.PlayOneShot(soudEffect);
 		GetComponent<Dialogue>().enableSpeech = true;
 		GetComponent<Dialogue>().Start();
 		triggerZone.gameObject.SetActiveRecursively(true);
