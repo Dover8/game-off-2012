@@ -12,8 +12,16 @@
 			}
 			return null;
 		}
+		var params = {
+			backgroundcolor: "202526",
+			bordercolor: "000000",
+			textcolor: "FFFFFF",
+			logoimage: "MyLogo.png",
+			progressbarimage: "MyProgressBar.png",
+			progressframeimage: "MyProgressFrame.png"
+		};
 		if (typeof unityObject != "undefined") {
-			unityObject.embedUnity("unityPlayer", "WebPlayer.unity3d", 640, 480);
+			unityObject.embedUnity("unityPlayer", "WebPlayer.unity3d", 640, 480, params);
 			
 		}
 		-->
@@ -22,8 +30,8 @@
 		<!--
 		body {
 			font-family: Helvetica, Verdana, Arial, sans-serif;
-			background-color: white;
-			color: black;
+			background-color: #202526;
+			color: white;
 			text-align: center;
 		}
 		a:link, a:visited {
